@@ -8,9 +8,6 @@ export function useBusinessEmployees() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const setreferralsLimit = useAuthStore((l) => l.setreferralsLimit)
-  const [page, setPage] = useState(1)
-  const [pageSize, setPageSize] = useState(50)
-
   const [modalOpen, setModalOpen] = useState(false)
   const [selectedUser, setSelectedUser] = useState<CompanyEmployee | null>(null)
   const [pendingAction, setPendingAction] = useState<boolean | null>(null)

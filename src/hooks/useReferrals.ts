@@ -7,6 +7,8 @@ export function useCorporateReferrals() {
   const [dataIndividuals, setDataIndividuals] = useState<ReferralCodeIndividualDTO[]>([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [page, setPage] = useState(1)
+  const [pageSize, setPageSize] = useState(50)
 
   // Search con debounce
   const [search, setSearch] = useState("")
