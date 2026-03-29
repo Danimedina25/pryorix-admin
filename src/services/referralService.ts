@@ -1,8 +1,13 @@
-import { CompanyEmployeesResponse, CreateCorporateCodeResponse, MembershipStatus, ReferralCode } from "../types/referrals"
+import { CompanyEmployeesResponse, CreateCorporateCodeResponse, MembershipStatus, ReferralCode, ReferralCodeIndividualDTO } from "../types/referrals"
 import { api } from "./api"
 
 export async function getCorporateReferralCodes(): Promise<ReferralCode[]> {
-  const response = await api.get("/referrals/admin/corporate")
+  const response = await api.get("/referrals/admin/codes/business")
+  return response.data.data
+}
+
+export async function getIndividualReferralCodes(): Promise<ReferralCodeIndividualDTO[]> {
+  const response = await api.get("/referrals/admin/codes/individual")
   return response.data.data
 }
 

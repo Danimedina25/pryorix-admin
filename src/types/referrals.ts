@@ -2,7 +2,7 @@ export interface ReferralCode {
   id: number
   ownerUserId: number
   code: string
-  createdAt: string // ISO string
+  createdAt: string 
   type: "EMPRESARIAL" | "NORMAL"
   employeeLimit?: number
   price?: number
@@ -31,4 +31,14 @@ export interface CompanyEmployee {
 export interface CompanyEmployeesResponse {
   employees: CompanyEmployee[]
   referralsLimit: number
+}
+
+export interface ReferralCodeIndividualDTO {
+  id: number;
+  code: string;
+  nombreCompleto: string;
+  plan:  "ANUAL" | "SEMESTRAL";
+  ownerUserId: number;
+  fechaCreacion: string; 
+  active: boolean;
 }

@@ -37,7 +37,7 @@ export function DashboardPage() {
           {!isCompany ? 
             <>
           <NavLink
-            to="/referrals/corporate"
+            to="/referrals/business"
             className={({ isActive }) =>
               `block px-4 py-2 rounded ${
                 isActive ? "bg-gray-700" : "hover:bg-gray-800"
@@ -48,14 +48,14 @@ export function DashboardPage() {
           </NavLink>
 
           <NavLink
-            to="/referrals/normal"
+            to="/referrals/individuals"
             className={({ isActive }) =>
               `block px-4 py-2 rounded ${
                 isActive ? "bg-gray-700" : "hover:bg-gray-800"
               }`
             }
           >
-            Códigos normales
+            Códigos individuales
           </NavLink>
           </> :
 

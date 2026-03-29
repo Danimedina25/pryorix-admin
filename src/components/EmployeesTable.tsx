@@ -1,4 +1,4 @@
-import { useCompanyEmployees } from "../hooks/useCompanyEmployees"
+import { useBusinessEmployees } from "../hooks/useBusinessEmployees"
 import { CompanyEmployee } from "../types/referrals"
 
 interface Props {
@@ -9,7 +9,7 @@ interface Props {
 export function EmployeesTable({ data , refetch}: Props) {
     const {fixDate, handleToggleStatus, pendingAction, modalOpen, selectedUser,
         confirmToggleStatus, setModalOpen, isActive
-     } = useCompanyEmployees()
+     } = useBusinessEmployees()
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
       <table className="min-w-full border-collapse">

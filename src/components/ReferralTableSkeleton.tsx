@@ -1,4 +1,4 @@
-export function CorporateReferralTableSkeleton() {
+export function ReferralTableSkeleton() {
   return (
     <div className="border border-gray-200 rounded-xl overflow-hidden">
       <div className="animate-pulse">

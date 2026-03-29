@@ -3,11 +3,13 @@ import { getCompanyEmployees, toggleEmployeeStatus } from "../services/referralS
 import { CompanyEmployee } from "../types/referrals"
 import { useAuthStore } from "../stores/authStore"
 
-export function useCompanyEmployees() {
+export function useBusinessEmployees() {
   const [data, setData] = useState<CompanyEmployee[]>([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const setreferralsLimit = useAuthStore((l) => l.setreferralsLimit)
+  const [page, setPage] = useState(1)
+  const [pageSize, setPageSize] = useState(50)
 
   const [modalOpen, setModalOpen] = useState(false)
   const [selectedUser, setSelectedUser] = useState<CompanyEmployee | null>(null)

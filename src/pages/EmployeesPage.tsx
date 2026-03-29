@@ -1,8 +1,8 @@
 import { useState } from "react"
 import { useAuthStore } from "../stores/authStore"
-import { useCompanyEmployees } from "../hooks/useCompanyEmployees"
+import { useBusinessEmployees } from "../hooks/useBusinessEmployees"
 import { EmployeesTable } from "../components/EmployeesTable"
-import { CorporateReferralTableSkeleton } from "../components/CorporateReferralTableSkeleton"
+import { ReferralTableSkeleton } from "../components/ReferralTableSkeleton"
 
 export function EmployeesPage() {
   const {
@@ -10,7 +10,7 @@ export function EmployeesPage() {
     loading,
     error,
     refetch,
-  } = useCompanyEmployees()
+  } = useBusinessEmployees()
 
   const isCompany = useAuthStore((i) => i.isCompany)
   const [search, setSearch] = useState("")
@@ -66,7 +66,7 @@ export function EmployeesPage() {
       </div>
 
       {/* Estados */}
-      {loading && <CorporateReferralTableSkeleton />}
+      {loading && <ReferralTableSkeleton />}
 
       {error && (
         <div className="bg-red-50 border border-red-200 text-red-700 rounded-lg p-4">

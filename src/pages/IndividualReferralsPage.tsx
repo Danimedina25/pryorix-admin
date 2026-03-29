@@ -1,14 +1,14 @@
-import { useCorporateReferrals } from "../hooks/useCorporateReferrals"
+import { useCorporateReferrals } from "../hooks/useReferrals"
 import { CorporateReferralTable } from "../components/CorporateReferralTable"
-import { CorporateReferralTableSkeleton } from "../components/CorporateReferralTableSkeleton"
+import { ReferralTableSkeleton } from "../components/ReferralTableSkeleton"
 import { useState } from "react"
-import { CreateCorporateReferralModal } from "../components/CreateCorporateReferralModal"
 import { useAuthStore } from "../stores/authStore"
+import { IndividualReferralsTable } from "../components/IndividualReferralsTable"
 
-export function CorporateReferralsPage() {
+export function IndividualReferralsPage() {
   const {
-    data,
-    total,
+    dataIndividuals,
+    totalIndividuals,
     loading,
     error,
     search,
@@ -17,7 +17,8 @@ export function CorporateReferralsPage() {
     setDateFrom,
     dateTo,
     setDateTo,
-    refetch,
+    refetchIndividuals,
+    page, setPage, totalPagesIndividuals
   } = useCorporateReferrals()
 
   const [openCreate, setOpenCreate] = useState(false)
@@ -29,18 +30,12 @@ export function CorporateReferralsPage() {
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
           <h1 className="text-2xl font-bold text-gray-800">
-            Códigos de Referido Empresariales
+            Códigos de Referido Individuales
           </h1>
           <p className="text-sm text-gray-500">
-            {total} resultados encontrados
+            {totalIndividuals} resultados encontrados
           </p>
         </div>
-        <button
-            onClick={() => setOpenCreate(true)}
-            className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition"
-            >
-            + Crear código empresarial
-        </button>
       </div>
 
       {/* Filtros */}
@@ -48,7 +43,7 @@ export function CorporateReferralsPage() {
         <div className="flex flex-col md:flex-row gap-4 items-end">
           <div className="flex flex-col w-full md:w-1/3">
             <label className="text-sm font-medium text-gray-700 mb-1">
-              Buscar por código o empresa
+              Buscar por código
             </label>
             <input
               type="text"
@@ -96,8 +91,7 @@ export function CorporateReferralsPage() {
         </div>
       </div>
 
-      {/* Estados */}
-      {loading && <CorporateReferralTableSkeleton />}
+      {loading && <ReferralTableSkeleton />}
 
       {error && (
         <div className="bg-red-50 border border-red-200 text-red-700 rounded-lg p-4">
@@ -105,15 +99,11 @@ export function CorporateReferralsPage() {
         </div>
       )}
 
-      {!loading && !error && <CorporateReferralTable data={data} onUpdated={refetch} />}
-      <CreateCorporateReferralModal
-        open={openCreate}
-        onClose={() => setOpenCreate(false)}
-        onCreated={() => {
-            refetch()          
-            setOpenCreate(false)
-        }}
-        />
+      {!loading && !error && <IndividualReferralsTable data={dataIndividuals} onUpdated={refetchIndividuals}
+      page={page}
+      totalPages={totalPagesIndividuals}
+      setPage={setPage} />}
+     
     </div>
     
   )
